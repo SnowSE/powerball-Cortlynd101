@@ -64,7 +64,7 @@ namespace LottoProfits
         private int createNewRandom()
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 6);
+            int randomNumber = random.Next(1, 69);
             return randomNumber;
         }
 
