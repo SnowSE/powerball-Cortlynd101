@@ -5,7 +5,6 @@ namespace LottoProfits
 {
     public class TicketList
     {
-        public int totalRevenue;
         public List<Ticket> ticketList { get; set; }
         public TicketList()
         {
@@ -22,9 +21,9 @@ namespace LottoProfits
             }
         }
 
-        public void calculateRevenue()
+        public int calculateRevenue()
         {
-            totalRevenue = ticketList.Count * 2;
+            return ticketList.Count * 2;
         }
     }
 }

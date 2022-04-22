@@ -10,8 +10,9 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         {
             this.context = context;
         }
-        [Given(@"a ticket is created")]
-        public void GivenATicketIsCreated()
+
+        [Given(@"ticket")]
+        public void GivenTicket()
         {
             Ticket ticket = new Ticket();
             context.Add("ticket", ticket);
@@ -58,7 +59,7 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void GivenWhenCalculatingRevenue()
         {
             TicketList ticketList = context.Get<TicketList>("ticketList");
-            ticketList.calculateRevenue();
+            context.Add("revenue", ticketList.calculateRevenue());
         }
 
         [Then(@"it should have (.*) Tickets")]
@@ -72,7 +73,89 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void ThenTheTotalCostShouldBe(int p0)
         {
             TicketList ticketList = context.Get<TicketList>("ticketList");
-            ticketList.totalRevenue.Should().Be(p0);
+            context.Get<int>("revenue").Should().Be(p0);
+        }
+        [Given(@"a ticket (.*)")]
+        public void GivenATicket(string s0)
+        {
+            Ticket staticTicket = new Ticket();
+            staticTicket = staticTicket.createStaticTicket(s0);
+            context.Add("staticTicket", staticTicket);
+        }
+
+        [Given(@"a winningTicket (.*)")]
+        public void GivenAWinningTicket(string s0)
+        {
+            WinningTicket staticWinningTicket = new WinningTicket();
+            staticWinningTicket = staticWinningTicket.createStaticWinningTicket(s0);
+            context.Add("staticWinningTicket", staticWinningTicket);
+        }
+
+        [Given(@"checking for winners")]
+        public void GivenCheckingForWinners()
+        {
+            Lottery lottery = new Lottery();
+            lottery.createWinnerLists(context.Get<Ticket>("staticTicket"), context.Get<WinningTicket>("staticWinningTicket"));
+            context.Add("lottery", lottery);
+        }
+
+        [When(@"seeing how many balls matched up")]
+        public void WhenSeeingHowManyBallsMatchedUp()
+        {
+            context.Add("ballsCorrect", value: context.Get<Ticket>("staticTicket").ballsCorrect);
+        }
+
+        [Then(@"if the ticket has (.*) correct")]
+        public void ThenIfTheTicketHasCorrect(int p0)
+        {
+            context.Get<int>("ballsCorrect").Should().Be(p0);
+        }
+
+        [Then(@"the ticket will win (.*)")]
+        public void ThenTheTicketWillWin(int p0)
+        {
+            switch (p0)
+            {
+                case 0:
+                    context.Get<Lottery>("lottery").grandPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 1:
+                    context.Get<Lottery>("lottery").firstPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 2:
+                    context.Get<Lottery>("lottery").secondPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 3:
+                    context.Get<Lottery>("lottery").thirdPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 4:
+                    context.Get<Lottery>("lottery").fouthPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 5:
+                    context.Get<Lottery>("lottery").fifthPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 6:
+                    context.Get<Lottery>("lottery").sixthPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 7:
+                    context.Get<Lottery>("lottery").seventhPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 8:
+                    context.Get<Lottery>("lottery").eighthPrizeWinners.ticketList.Count.Should().Be(1);
+                    break;
+
+                case 9:
+                    context.Get<Lottery>("lottery").loserList.ticketList.Count.Should().Be(1);
+                    break;
+            }
         }
     }
 }

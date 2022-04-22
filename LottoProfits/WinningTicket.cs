@@ -9,5 +9,10 @@ namespace LottoProfits
         {
             winningTicket = winningTicket.createTicket(winningTicket);
         }
+
+        public WinningTicket createStaticWinningTicket(string s0)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

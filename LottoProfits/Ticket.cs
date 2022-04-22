@@ -6,11 +6,11 @@ namespace LottoProfits
     public class Ticket
     {
         public int[] ticketNumbers { get; set; }
-        public int ticketSum;
+        public int ballsCorrect;
         public Ticket()
         {
             ticketNumbers = new int[6];
-            ticketSum = 0;
+            ballsCorrect = 0;
         }
 
         public Ticket createTicket(Ticket ticket)
@@ -18,17 +18,8 @@ namespace LottoProfits
             ticket = ticket.createNumbers(ticket);
             ticket = ticket.createPowerBall(ticket);
             ticket = ticket.sortTicket(ticket);
-            ticket.setTicketSum(ticket);
             checkDuplicity();
             return ticket;
-        }
-
-        private void setTicketSum(Ticket ticket)
-        {
-            foreach (int i in ticketNumbers)
-            {
-                ticketSum += i;
-            }
         }
 
         private Ticket sortTicket(Ticket ticket) //This might be useful later as the tickets numbers are now sorted smallest to largest (except the powerball, that is still last).
@@ -98,6 +89,11 @@ namespace LottoProfits
                 }
             }
             return false;
+        }
+
+        public Ticket createStaticTicket(string s0)
+        {
+            throw new NotImplementedException();
         }
 
         private int createNewRandom()
