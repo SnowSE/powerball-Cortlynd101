@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lottery.cs" />
+    <Compile Include="WinningTicket.cs" />
     <Compile Include="TicketList.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Program.cs" />

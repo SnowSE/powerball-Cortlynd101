@@ -1,5 +1,5 @@
 ﻿Feature: LottoProfits
-! This program finds the profitability of a lottery.
+! This program finds the profitability of a powerball lottery.
 
 @mytag
 Scenario: Creating a Ticket
@@ -18,4 +18,3 @@ Scenario: Selling 1000 Tickets
 	And when calculating revenue
 	Then it should have 1000 Tickets
 	Then the total revenue should be 2000
-
