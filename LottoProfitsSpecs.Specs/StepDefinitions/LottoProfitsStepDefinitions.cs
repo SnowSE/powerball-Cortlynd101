@@ -50,7 +50,7 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void GivenWeSellTickets(int p0)
         {
             TicketList ticketList = new TicketList();
-            ticketList = ticketList.createList(p0);
+            ticketList.createList(p0);
             context.Add("ticketList", ticketList);
         }
 
@@ -65,7 +65,7 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void ThenItShouldHaveTickets(int p0)
         {
             TicketList ticketList = context.Get<TicketList>("ticketList");
-            ticketList.ticketList.Capacity.Should().Be(p0);
+            ticketList.ticketList.Count.Should().Be(p0);
         }
 
         [Then(@"the total revenue should be (.*)")]

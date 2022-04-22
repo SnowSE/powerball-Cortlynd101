@@ -12,9 +12,14 @@ namespace LottoProfits
             ticketList = new List<Ticket>();
         }
 
-        public TicketList createList(int p0)
+        public void createList(int p0)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < p0; i++)
+            {
+                Ticket t = new Ticket();
+                var newlyCreatedTicket = t.createTicket(t);
+                ticketList.Add(newlyCreatedTicket);
+            }
         }
 
         public void calculateRevenue()
