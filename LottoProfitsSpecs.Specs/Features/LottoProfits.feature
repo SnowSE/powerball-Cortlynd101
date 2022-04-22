@@ -18,3 +18,4 @@ Scenario: Selling 1000 Tickets
 	And when calculating revenue
 	Then it should have 1000 Tickets
 	Then the total revenue should be 2000
+

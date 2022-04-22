@@ -14,6 +14,7 @@ namespace LottoProfits
         {
             ticket = ticket.createNumbers(ticket);
             ticket = ticket.createPowerBall(ticket);
+            checkDuplicity();
             return ticket;
         }
 
@@ -77,12 +78,27 @@ namespace LottoProfits
 
         public bool checkDuplicity()
         {
-            throw new NotImplementedException();
+            foreach (int number in ticketNumbers)
+            {
+                for (int i = 0; i < ticketNumbers.Length; i++)
+                    if (number == ticketNumbers[i])
+                    {
+                        return false;
+                    }
+            }
+            return true;
         }
 
         public bool checkNumberIsInRange(int p0, int p1)
         {
-            throw new NotImplementedException();
+            foreach (int number in ticketNumbers)
+            {
+                if (number > p0 && number < p1)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
