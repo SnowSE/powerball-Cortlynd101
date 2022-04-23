@@ -203,9 +203,16 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Checking Winning Tickets")]
-        [NUnit.Framework.TestCaseAttribute("1\'2\'3\'4\'5\'6", "1\'2\'3\'4\'5\'6", "15", "0", null)]
-        [NUnit.Framework.TestCaseAttribute("1\'2\'3\'4\'5\'7", "1\'2\'3\'4\'5\'6", "5", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("1\'2\'3\'4\'6\'7", "1\'2\'3\'4\'5\'6", "14", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_5_6", "1_2_3_4_5_6", "15", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_5_7", "1_2_3_4_5_6", "5", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_6_6", "1_2_3_4_5_6", "14", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_6_7", "1_2_3_4_5_6", "4", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_6_7_6", "1_2_3_4_5_6", "13", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_6_7_7", "1_2_3_4_5_6", "3", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_6_7_8_6", "1_2_3_4_5_6", "12", "6", null)]
+        [NUnit.Framework.TestCaseAttribute("1_6_7_8_9_6", "1_2_3_4_5_6", "11", "7", null)]
+        [NUnit.Framework.TestCaseAttribute("6_7_8_9_10_6", "1_2_3_4_5_6", "10", "8", null)]
+        [NUnit.Framework.TestCaseAttribute("6_7_8_9_10_11", "1_2_3_4_5_6", "0", "9", null)]
         public virtual void CheckingWinningTickets(string ticket, string winningTicket, string balls, string winnerTier, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

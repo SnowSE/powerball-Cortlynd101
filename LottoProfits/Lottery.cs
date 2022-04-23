@@ -25,61 +25,67 @@ namespace LottoProfits
             sixthPrizeWinners = new TicketList();
             seventhPrizeWinners = new TicketList();
             eighthPrizeWinners = new TicketList();
+            loserList = new TicketList();
         }
-        public void checkTicketListForWinners(TicketList ticketList)
+
+        public Lottery checkTicketListForWinners(TicketList ticketList)
         {
+            Lottery lottery = new Lottery();
             WinningTicket winningTicket = new WinningTicket();
             foreach (Ticket ticket in ticketList.ticketList)
             {
-                createWinnerLists(ticket, winningTicket);
+                createWinnerLists(ticket, winningTicket, lottery);
                 ticketList.ticketList.Remove(ticket);
             }
-        }
-        public void createWinnerLists(Ticket ticket, WinningTicket winningTicket)
-        {
-            int numberOfWinningBalls = Lottery.CheckTicketAgainstWinningTicket(ticket, winningTicket);
-            numberOfWinningBalls += ComparingPowerBall(ticket, winningTicket);
-            placeTicketInCorrectList(ticket, numberOfWinningBalls);
+            return lottery;
         }
 
-        private void placeTicketInCorrectList(Ticket ticket, int numberOfWinningBalls)
+        public void createWinnerLists(Ticket ticket, WinningTicket winningTicket, Lottery lottery)
+        {
+            int numberOfWinningBalls = Lottery.checkTicketAgainstWinningTicket(ticket, winningTicket);
+            numberOfWinningBalls += comparingPowerBall(ticket, winningTicket);
+            ticket.ballsCorrect = numberOfWinningBalls;
+            placeTicketInCorrectList(ticket, numberOfWinningBalls, lottery);
+        }
+
+        private void placeTicketInCorrectList(Ticket ticket, int numberOfWinningBalls, Lottery lottery)
         {
             switch(numberOfWinningBalls)
             {
                 case 15:
-                    grandPrizeWinners.ticketList.Add(ticket);
+                    lottery.grandPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 5:
-                    firstPrizeWinners.ticketList.Add(ticket);
+                    lottery.firstPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 14:
-                    secondPrizeWinners.ticketList.Add(ticket);
+                    lottery.secondPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 4:
-                    thirdPrizeWinners.ticketList.Add(ticket);
+                    lottery.thirdPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 13:
-                    fouthPrizeWinners.ticketList.Add(ticket);
+                    lottery.fouthPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 3:
-                    fifthPrizeWinners.ticketList.Add(ticket);
+                    lottery.fifthPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 12:
-                    sixthPrizeWinners.ticketList.Add(ticket);
+                    lottery.sixthPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 11:
-                    seventhPrizeWinners.ticketList.Add(ticket);
+                    lottery.seventhPrizeWinners.ticketList.Add(ticket);
                     break;
                 case 10:
-                    eighthPrizeWinners.ticketList.Add(ticket);
+                    lottery.eighthPrizeWinners.ticketList.Add(ticket);
                     break;
                 default:
-                    loserList.ticketList.Add(ticket);
+                    lottery.loserList.ticketList.Add(ticket);
                     break;
             }
         }
 
-        private static int CheckTicketAgainstWinningTicket(Ticket ticket, WinningTicket winningTicket)
+        private static int checkTicketAgainstWinningTicket(Ticket ticket, WinningTicket winningTicket)
         {
             int numberOfCurrentBalls = 0;
             for (int i =0; i < 5; i++)
@@ -94,7 +100,8 @@ namespace LottoProfits
             }
             return numberOfCurrentBalls;
         }
-        public int ComparingPowerBall(Ticket ticket, WinningTicket winningticket)
+
+        public int comparingPowerBall(Ticket ticket, WinningTicket winningticket)
         {
             if(ticket.ticketNumbers[5]==winningticket.winningTicket.ticketNumbers[5])
             {

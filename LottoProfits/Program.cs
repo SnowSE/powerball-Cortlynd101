@@ -12,6 +12,12 @@ namespace LottoProfits
 
             Console.WriteLine("\n\nPress any key to exit");
             Console.ReadKey();
+
+            TicketList ticketList = new TicketList();
+            ticketList.createList(1000);
+
+            Console.WriteLine("\n\nPress any key to exit");
+            Console.ReadKey();
         }
     }
 }

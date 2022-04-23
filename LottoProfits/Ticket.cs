@@ -91,9 +91,14 @@ namespace LottoProfits
             return false;
         }
 
-        public Ticket createStaticTicket(string s0)
+        public Ticket createStaticTicket(Ticket ticket, string s0)
         {
-            throw new NotImplementedException();
+            string[] characters = s0.Split('_');
+            for(int i = 0; i < ticket.ticketNumbers.Length; i++)
+            {
+                ticket.ticketNumbers[i] = Int32.Parse(characters[i]);
+            }
+            return ticket;
         }
 
         private int createNewRandom()

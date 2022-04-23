@@ -79,7 +79,7 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void GivenATicket(string s0)
         {
             Ticket staticTicket = new Ticket();
-            staticTicket = staticTicket.createStaticTicket(s0);
+            staticTicket = staticTicket.createStaticTicket(staticTicket, s0);
             context.Add("staticTicket", staticTicket);
         }
 
@@ -87,7 +87,7 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void GivenAWinningTicket(string s0)
         {
             WinningTicket staticWinningTicket = new WinningTicket();
-            staticWinningTicket = staticWinningTicket.createStaticWinningTicket(s0);
+            staticWinningTicket = staticWinningTicket.createStaticWinningTicket(staticWinningTicket, s0);
             context.Add("staticWinningTicket", staticWinningTicket);
         }
 
@@ -95,14 +95,15 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
         public void GivenCheckingForWinners()
         {
             Lottery lottery = new Lottery();
-            lottery.createWinnerLists(context.Get<Ticket>("staticTicket"), context.Get<WinningTicket>("staticWinningTicket"));
+            Ticket staticTicket = context.Get<Ticket>("staticTicket");
+            lottery.createWinnerLists(staticTicket, context.Get<WinningTicket>("staticWinningTicket"), lottery);
             context.Add("lottery", lottery);
         }
 
         [When(@"seeing how many balls matched up")]
         public void WhenSeeingHowManyBallsMatchedUp()
         {
-            context.Add("ballsCorrect", value: context.Get<Ticket>("staticTicket").ballsCorrect);
+            context.Add("ballsCorrect", context.Get<Ticket>("staticTicket").ballsCorrect);
         }
 
         [Then(@"if the ticket has (.*) correct")]

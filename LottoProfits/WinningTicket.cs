@@ -10,9 +10,14 @@ namespace LottoProfits
             winningTicket = winningTicket.createTicket(winningTicket);
         }
 
-        public WinningTicket createStaticWinningTicket(string s0)
+        public WinningTicket createStaticWinningTicket(WinningTicket winningTicket, string staticNumbers)
         {
-            throw new NotImplementedException();
+            string[] characters = staticNumbers.Split('_');
+            for (int i = 0; i < winningTicket.winningTicket.ticketNumbers.Length; i++)
+            {
+                winningTicket.winningTicket.ticketNumbers[i] = Int32.Parse(characters[i]);
+            }
+            return winningTicket;
         }
     }
 }
