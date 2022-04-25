@@ -263,6 +263,72 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Checking Profit Amount")]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_5_6", "1_2_3_4_5_6", "15", "-39999998", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_5_7", "1_2_3_4_5_6", "5", "-999998", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_6_6", "1_2_3_4_5_6", "14", "-49998", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_4_6_7", "1_2_3_4_5_6", "4", "-98", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_6_7_6", "1_2_3_4_5_6", "13", "-98", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_3_6_7_7", "1_2_3_4_5_6", "3", "-5", null)]
+        [NUnit.Framework.TestCaseAttribute("1_2_6_7_8_6", "1_2_3_4_5_6", "12", "-5", null)]
+        [NUnit.Framework.TestCaseAttribute("1_6_7_8_9_6", "1_2_3_4_5_6", "11", "-2", null)]
+        [NUnit.Framework.TestCaseAttribute("6_7_8_9_10_6", "1_2_3_4_5_6", "10", "-2", null)]
+        [NUnit.Framework.TestCaseAttribute("6_7_8_9_10_11", "1_2_3_4_5_6", "0", "2", null)]
+        public virtual void CheckingProfitAmount(string ticket, string winningTicket, string balls, string profit, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("ticket", ticket);
+            argumentsOfScenario.Add("winningTicket", winningTicket);
+            argumentsOfScenario.Add("balls", balls);
+            argumentsOfScenario.Add("profit", profit);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Checking Profit Amount", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 43
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 44
+ testRunner.Given(string.Format("a ticket {0}", ticket), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 45
+ testRunner.And(string.Format("a winningTicket {0}", winningTicket), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 46
+ testRunner.And("checking for winners", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 47
+ testRunner.When("seeing how many balls matched up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 48
+ testRunner.Then(string.Format("if the ticket has {0} correct", balls), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 49
+ testRunner.When("checking for profit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 50
+ testRunner.Then(string.Format("the profit will be {0}", profit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

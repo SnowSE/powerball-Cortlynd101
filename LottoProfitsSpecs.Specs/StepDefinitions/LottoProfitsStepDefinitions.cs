@@ -81,6 +81,10 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
             Ticket staticTicket = new Ticket();
             staticTicket = staticTicket.createStaticTicket(staticTicket, s0);
             context.Add("staticTicket", staticTicket);
+
+            TicketList ticketList = new TicketList();
+            ticketList.ticketList.Add(staticTicket);
+            context.Add("ticketList", ticketList);
         }
 
         [Given(@"a winningTicket (.*)")]
@@ -157,6 +161,20 @@ namespace LottoProfitsSpecs.Specs.StepDefinitions
                     context.Get<Lottery>("lottery").loserList.ticketList.Count.Should().Be(1);
                     break;
             }
+        }
+
+        [When(@"checking for profit")]
+        public void WhenCheckingForProfit()
+        {
+            SalesReport salesReport = new SalesReport();
+            salesReport = salesReport.calculateProfit(context.Get<Lottery>("lottery"), context.Get<TicketList>("ticketList"), salesReport);
+            context.Add("salesReport", salesReport);
+        }
+
+        [Then(@"the profit will be (.*)")]
+        public void ThenTheProfitWillBe(int p0)
+        {
+            context.Get<SalesReport>("salesReport").profit.Should().Be(p0);
         }
     }
 }

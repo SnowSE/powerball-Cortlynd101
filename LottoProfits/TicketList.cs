@@ -18,6 +18,7 @@ namespace LottoProfits
                 Ticket t = new Ticket();
                 Ticket newlyCreatedTicket = t.createTicket(t);
                 ticketList.Add(newlyCreatedTicket);
+                Console.WriteLine($"ticket {i} created");
             }
         }
 

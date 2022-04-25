@@ -38,3 +38,25 @@ Scenario Outline: Checking Winning Tickets
 	| 1_6_7_8_9_6   | 1_2_3_4_5_6   | 11    | 7          |
 	| 6_7_8_9_10_6  | 1_2_3_4_5_6   | 10    | 8          |
 	| 6_7_8_9_10_11 | 1_2_3_4_5_6   | 0     | 9          |
+
+
+Scenario Outline: Checking Profit Amount
+	Given a ticket <ticket>
+	And a winningTicket <winningTicket>
+	And checking for winners
+	When seeing how many balls matched up
+	Then if the ticket has <balls> correct
+	When checking for profit
+	Then the profit will be <profit>
+	Examples: 
+	| ticket        | winningTicket | balls | profit    |
+	| 1_2_3_4_5_6   | 1_2_3_4_5_6   | 15    | -39999998 |
+	| 1_2_3_4_5_7   | 1_2_3_4_5_6   | 5     | -999998   |
+	| 1_2_3_4_6_6   | 1_2_3_4_5_6   | 14    | -49998    |
+	| 1_2_3_4_6_7   | 1_2_3_4_5_6   | 4     | -98       |
+	| 1_2_3_6_7_6   | 1_2_3_4_5_6   | 13    | -98       |
+	| 1_2_3_6_7_7   | 1_2_3_4_5_6   | 3     | -5        |
+	| 1_2_6_7_8_6   | 1_2_3_4_5_6   | 12    | -5        |
+	| 1_6_7_8_9_6   | 1_2_3_4_5_6   | 11    | -2        |
+	| 6_7_8_9_10_6  | 1_2_3_4_5_6   | 10    | -2        |
+	| 6_7_8_9_10_11 | 1_2_3_4_5_6   | 0     | 2         |

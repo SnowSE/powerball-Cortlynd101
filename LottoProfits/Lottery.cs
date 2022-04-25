@@ -35,7 +35,16 @@ namespace LottoProfits
             foreach (Ticket ticket in ticketList.ticketList)
             {
                 createWinnerLists(ticket, winningTicket, lottery);
-                ticketList.ticketList.Remove(ticket);
+            }
+            return lottery;
+        }
+
+        public Lottery checkTicketListForWinners(TicketList ticketList, WinningTicket winningTicket)
+        {
+            Lottery lottery = new Lottery();
+            foreach (Ticket ticket in ticketList.ticketList)
+            {
+                createWinnerLists(ticket, winningTicket, lottery);
             }
             return lottery;
         }
@@ -92,7 +101,7 @@ namespace LottoProfits
             {
                 for (int j= 0; j < 5; j++)
                 {
-                    if (ticket.ticketNumbers[i]== winningTicket.winningTicket.ticketNumbers[j])
+                    if (ticket.ticketNumbers[i] == winningTicket.winningTicket.ticketNumbers[j])
                     {
                         numberOfCurrentBalls++;
                     }
