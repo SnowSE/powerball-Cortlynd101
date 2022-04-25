@@ -15,8 +15,8 @@ namespace LottoProfits
         {
             for (int i = 0; i < p0; i++)
             {
-                Ticket t = new Ticket();
-                Ticket newlyCreatedTicket = t.createTicket(t);
+                Ticket newlyCreatedTicket = new Ticket();
+                newlyCreatedTicket = newlyCreatedTicket.createTicket(newlyCreatedTicket);
                 ticketList.Add(newlyCreatedTicket);
                 Console.WriteLine($"ticket {i} created");
             }

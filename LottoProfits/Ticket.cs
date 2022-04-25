@@ -62,11 +62,10 @@ namespace LottoProfits
 
         private Ticket createNumbers(Ticket ticket)
         {
-            Random random = new Random();
             int randomNumber = createNewRandom();
             for (int i = 0; i < ticketNumbers.Length; i++)
             {
-                if (numberInTicketNumbers(randomNumber) != true)
+                if (numberInTicketNumbers(randomNumber, ticket.ticketNumbers) != true)
                 {
                     ticket.ticketNumbers[i] = randomNumber;
                 }
@@ -79,7 +78,7 @@ namespace LottoProfits
             return ticket;
         }
 
-        private bool numberInTicketNumbers(int numberToCheck)
+        private bool numberInTicketNumbers(int numberToCheck, int[] ticketNumbers)
         {
             foreach (int number in ticketNumbers)
             {
