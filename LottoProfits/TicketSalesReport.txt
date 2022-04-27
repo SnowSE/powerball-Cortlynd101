@@ -1,6 +1,7 @@
-Revenue: 2002
-Cost: 0
-Profit: 2002
+Revenue: 200
+Cost: -20
+Profit: 180
+
 Grand Prize Winners: 
 
 First Prize Winners: 
@@ -16,5 +17,10 @@ Fifth Prize Winners:
 Sixth Prize Winners: 
 
 Seventh Prize Winners: 
+ Ticket: 32, 21, 46, 1, 59, 6
+ Ticket: 32, 57, 46, 1, 26, 6
+ Ticket: 33, 58, 47, 2, 60, 6
 
 Eighth Prize Winners: 
+ Ticket: 64, 20, 45, 33, 58, 6
+ Ticket: 66, 22, 47, 36, 60, 6

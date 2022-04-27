@@ -17,8 +17,8 @@ namespace LottoProfits
         {
             ticket = ticket.createNumbers(ticket);
             ticket = ticket.createPowerBall(ticket);
-            ticket = ticket.sortTicket(ticket);
-            checkDuplicity();
+            //ticket = ticket.sortTicket(ticket);
+            //checkDuplicity();
             return ticket;
         }
 

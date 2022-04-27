@@ -7,18 +7,18 @@ namespace LottoProfits
         static void Main(string[] args)
         {
             TicketList ticketList = new TicketList();
-            ticketList.createList(1000);
+            ticketList.createList(100);
 
             WinningTicket staticWinningTicket = new WinningTicket();
             staticWinningTicket = staticWinningTicket.createStaticWinningTicket(staticWinningTicket, "1_2_3_4_5_6");
 
-            Ticket staticTicket = new Ticket();
-            staticTicket = staticTicket.createStaticTicket(staticTicket, "1_2_3_4_5_6");
-            ticketList.ticketList.Add(staticTicket);
+            //Ticket staticTicket = new Ticket();
+            //staticTicket = staticTicket.createStaticTicket(staticTicket, "1_2_3_4_5_6");
+            //ticketList.ticketList.Add(staticTicket);
 
             Lottery lottery = new Lottery();
-            //lottery = lottery.checkTicketListForWinners(ticketList, staticWinningTicket);
-            lottery.checkTicketListForWinners(ticketList);
+            lottery = lottery.checkTicketListForWinners(ticketList, staticWinningTicket);
+            //lottery.checkTicketListForWinners(ticketList);
 
             SalesReport salesReport = new SalesReport();
             salesReport.clearReport();
